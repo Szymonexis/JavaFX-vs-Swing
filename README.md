@@ -1,5 +1,7 @@
 # JavaFX-vs-Swing
 
+Created by @Szymonexis and @Vyvr
+
 ## Links
 - https://www.educba.com/javafx-vs-swing/
 - https://careerkarma.com/blog/javafx-vs-java-swing/
