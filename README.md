@@ -1,6 +1,6 @@
 # JavaFX-vs-Swing
 
-Created by @Szymonexis and @Vyvr
+Created by [Szymonexis](https://github.com/Szymonexis) and [Vyvr](https://github.com/Vyvr)
 
 ## Links
 - https://www.educba.com/javafx-vs-swing/
