@@ -1,0 +1,55 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00000001122db9e0, pid=59967, tid=259
+#
+# JRE version: OpenJDK Runtime Environment Zulu15.34+17-CA (15.0.4+5) (build 15.0.4+5-MTS)
+# Java VM: OpenJDK 64-Bit Server VM Zulu15.34+17-CA (15.0.4+5-MTS, mixed mode, tiered, compressed oops, g1 gc, bsd-aarch64)
+# Problematic frame:
+# J 4385  java.io.FileInputStream.available0()I java.base@15.0.4 (0 bytes) @ 0x00000001122db9e0 [0x00000001122db9c0+0x0000000000000020]
+#
+# No core dump will be written. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://www.azul.com/support/
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=58576:/Applications/IntelliJ IDEA.app/Contents/bin -Dfile.encoding=UTF-8 --module-path=/Users/molybdenum/.m2/repository/org/openjfx/javafx-base/15.0.1/javafx-base-15.0.1-mac.jar:/Users/molybdenum/.m2/repository/org/openjfx/javafx-graphics/15.0.1/javafx-graphics-15.0.1-mac.jar:/Users/molybdenum/.m2/repository/org/openjfx/javafx-web/15.0.1/javafx-web-15.0.1-mac.jar:/Users/molybdenum/.m2/repository/org/openjfx/javafx-media/15.0.1/javafx-media-15.0.1-mac.jar:/Users/molybdenum/.m2/repository/eu/hansolo/tilesfx/11.48/tilesfx-11.48.jar:/Users/molybdenum/.m2/repository/net/synedra/validatorfx/0.1.13/validatorfx-0.1.13.jar:/Users/molybdenum/.m2/repository/org/openjfx/javafx-fxml/15.0.1/javafx-fxml-15.0.1-mac.jar:/Users/molybdenum/Desktop/JavaFX vs Swing/JavaFX-Example/target/classes:/Users/molybdenum/.m2/repository/com/dlsc/formsfx/formsfx-core/11.3.2/formsfx-core-11.3.2.jar:/Users/molybdenum/.m2/repository/org/openjfx/javafx-controls/15.0.1/javafx-controls-15.0.1-mac.jar:/Users/molybdenum/.m2/repository/org/kordamp/ikonli/ikonli-javafx/12.2.0/ikonli-javafx-12.2.0.jar:/Users/molybdenum/.m2/repository/org/json/json/20211205/json-20211205.jar:/Users/molybdenum/.m2/repository/org/kordamp/ikonli/ikonli-core/12.2.0/ikonli-core-12.2.0.jar:/Users/molybdenum/.m2/repository/org/controlsfx/controlsfx/11.1.0/controlsfx-11.1.0.jar:/Users/molybdenum/.m2/repository/org/kordamp/bootstrapfx/bootstrapfx-core/0.4.0/bootstrapfx-core-0.4.0.jar -Djdk.module.main=com.example.javafxexample com.example.javafxexample/com.example.javafxexample.JavaFXExampleApplication
+
+Host: MacBookAir10,1 arm64 1 MHz, 8 cores, 8G, Darwin 21.4.0
+Time: Mon Mar 21 01:00:26 2022 CET elapsed time: 28.923678 seconds (0d 0h 0m 28s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000158122200):  JavaThread "JavaFX Application Thread" [_thread_in_Java, id=259, stack(0x000000016dd24000,0x000000016fd24000)]
+
+Stack: [0x000000016dd24000,0x000000016fd24000],  sp=0x000000016f53bfe0,  free space=24671k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+J 4385  java.io.FileInputStream.available0()I java.base@15.0.4 (0 bytes) @ 0x00000001122db9e0 [0x00000001122db9c0+0x0000000000000020]
+C  0x00000007586de4f0
+
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 2 (SEGV_ACCERR), si_addr: 0x000000016f527fe0
+
+Register to memory mapping:
+
+ x0=0x00000007402d4610 is an oop: java.nio.charset.CoderResult 
+{0x00000007402d4610} - klass: 'java/nio/charset/CoderResult'
+ x1=0x00000007586de460 is an oop: java.io.FileInputStream 
+{0x00000007586de460} - klass: 'java/io/FileInputStream'
+ x2=0x0000000000000059 is an unknown value
+ x3=0x00000007586e45d8 is an oop: java.nio.HeapCharBuffer 
+{0x00000007586e45d8} - klass: 'java/nio/HeapCharBuffer'
+ x4=0x00000007586de580 is an oop: [B 
+{0x00000007586de580} - klass: {type array byte}
+ - length: 8192
+ x5=0x00000007586e0590 is an oop: [C 
+{0x00000007586e0590} - klass: {type array char}
+ - length: 8192
+ x6=0x0000000000000059 is an unknown value
+ x7=0x0000000000000022 is an unknown value
+ x8=1610631687 is a compressed pointer to class: 0x0000000300025038
+java.io.FileInputStream {0x0000000300025038}
+ x9=

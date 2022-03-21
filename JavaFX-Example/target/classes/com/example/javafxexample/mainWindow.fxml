@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxexample.controllers.MainWindowController">
+   <top>
+      <Label text="Example JavaFX" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Label>
+   </top>
+   <center>
+      <BorderPane fx:id="formBorderPane" prefHeight="363.0" prefWidth="446.0" BorderPane.alignment="CENTER">
+         <top>
+            <Label fx:id="stepLabel" text="Step 1" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+         </top>
+      </BorderPane>
+   </center>
+   <left>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <RadioButton fx:id="menuStepOneRadioButton" mnemonicParsing="false" onAction="#onChangeForm" text="Step 1">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="menuToggleGroup" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="menuStepTwoRadioButton" mnemonicParsing="false" onAction="#onChangeForm" text="Step 2" toggleGroup="$menuToggleGroup">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </RadioButton>
+            <RadioButton fx:id="menuStepThreeRadioButton" mnemonicParsing="false" onAction="#onChangeForm" text="Step 3" toggleGroup="$menuToggleGroup">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </RadioButton>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
