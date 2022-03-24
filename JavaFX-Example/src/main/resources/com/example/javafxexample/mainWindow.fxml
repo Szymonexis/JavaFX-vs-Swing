@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
@@ -7,18 +8,20 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxexample.controllers.MainWindowController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxexample.controllers.MainWindowController">
    <top>
-      <Label text="Example JavaFX" BorderPane.alignment="CENTER">
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </Label>
+      <VBox alignment="CENTER" styleClass="my-top-label-vbox">
+         <Label styleClass="my-label" text="JavaFX example app" BorderPane.alignment="CENTER">
+            <padding>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+         </Label>
+      </VBox>
    </top>
    <center>
       <BorderPane fx:id="formBorderPane" prefHeight="363.0" prefWidth="446.0" BorderPane.alignment="CENTER">
          <top>
-            <Label fx:id="stepLabel" text="Step 1" BorderPane.alignment="CENTER">
+            <Label fx:id="stepLabel" styleClass="my-label" text="Step 1" BorderPane.alignment="CENTER">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -27,9 +30,9 @@
       </BorderPane>
    </center>
    <left>
-      <VBox BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" styleClass="my-left-menu-vbox" BorderPane.alignment="CENTER">
          <children>
-            <RadioButton fx:id="menuStepOneRadioButton" mnemonicParsing="false" onAction="#onChangeForm" text="Step 1">
+            <RadioButton fx:id="menuStepOneRadioButton" mnemonicParsing="false" onAction="#onChangeForm" styleClass="my-radio-button" text="Step 1">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
@@ -37,12 +40,12 @@
                   <ToggleGroup fx:id="menuToggleGroup" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="menuStepTwoRadioButton" mnemonicParsing="false" onAction="#onChangeForm" text="Step 2" toggleGroup="$menuToggleGroup">
+            <RadioButton fx:id="menuStepTwoRadioButton" mnemonicParsing="false" onAction="#onChangeForm" styleClass="my-radio-button" text="Step 2" toggleGroup="$menuToggleGroup">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </RadioButton>
-            <RadioButton fx:id="menuStepThreeRadioButton" mnemonicParsing="false" onAction="#onChangeForm" text="Step 3" toggleGroup="$menuToggleGroup">
+            <RadioButton fx:id="menuStepThreeRadioButton" mnemonicParsing="false" onAction="#onChangeForm" styleClass="my-radio-button" text="Step 3" toggleGroup="$menuToggleGroup">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
@@ -50,4 +53,7 @@
          </children>
       </VBox>
    </left>
+<!--   <stylesheets>-->
+<!--      <URL value="@stylesheets/application.css" />-->
+<!--   </stylesheets>-->
 </BorderPane>

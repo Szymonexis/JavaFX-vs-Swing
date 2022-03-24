@@ -1,6 +1,6 @@
 package com.example.javafxexample.controllers;
 
-import com.example.javafxexample.enums.ColorEnum;
+import com.example.javafxexample.enums.StyleClassEnum;
 import com.example.javafxexample.enums.InputTypeEnum;
 import com.example.javafxexample.enums.JSONKeysEnum;
 import com.example.javafxexample.enums.StepEnum;
@@ -35,9 +35,19 @@ public class StepOneController extends ChildController {
     @FXML
     public void initialize() throws IOException {
         jsonObject = JSONFileReader.read();
-        nameTextField.setText((String) jsonObject.get(JSONKeysEnum.NAME.getText()));
-        surnameTextField.setText((String) jsonObject.get(JSONKeysEnum.SURNAME.getText()));
         String date = (String) jsonObject.get(JSONKeysEnum.DATE_OF_BIRTH.getText());
+        String name = (String) jsonObject.get(JSONKeysEnum.NAME.getText());
+        String surname = (String) jsonObject.get(JSONKeysEnum.SURNAME.getText());
+
+        if (!name.equals("") && !surname.equals("") && !date.equals("")) {
+            nextButton.setDisable(false);
+            isBirth = true;
+            isSurname = true;
+            isName = true;
+        }
+
+        nameTextField.setText(name);
+        surnameTextField.setText(surname);
         if (!date.equals("")) {
             birthDatePicker.setValue(LocalDate.parse(date));
         }
@@ -59,28 +69,28 @@ public class StepOneController extends ChildController {
         switch (inputType) {
             case NAME -> {
                 if(nameTextField.getText().isEmpty()) {
-                    nameLabel.setStyle(ColorEnum.RED.getValue());
+                    nameLabel.setStyle(StyleClassEnum.WRONG.getValue());
                     isName = false;
                 } else {
-                    nameLabel.setStyle(ColorEnum.BLACK.getValue());
+                    nameLabel.setStyle(StyleClassEnum.GOOD.getValue());
                     isName = true;
                 }
             }
             case SURNAME -> {
                 if(surnameTextField.getText().isEmpty()) {
-                    surnameLabel.setStyle(ColorEnum.RED.getValue());
+                    surnameLabel.setStyle(StyleClassEnum.WRONG.getValue());
                     isSurname = false;
                 } else {
-                    surnameLabel.setStyle(ColorEnum.BLACK.getValue());
+                    surnameLabel.setStyle(StyleClassEnum.GOOD.getValue());
                     isSurname = true;
                 }
             }
             case BIRTH -> {
                 if(birthDatePicker.getValue() == null) {
-                    birthLabel.setStyle(ColorEnum.RED.getValue());
+                    birthLabel.setStyle(StyleClassEnum.WRONG.getValue());
                     isBirth = false;
                 } else {
-                    birthLabel.setStyle(ColorEnum.BLACK.getValue());
+                    birthLabel.setStyle(StyleClassEnum.GOOD.getValue());
                     isBirth = true;
                 }
             }

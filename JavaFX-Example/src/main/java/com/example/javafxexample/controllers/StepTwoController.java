@@ -1,6 +1,6 @@
 package com.example.javafxexample.controllers;
 
-import com.example.javafxexample.enums.ColorEnum;
+import com.example.javafxexample.enums.StyleClassEnum;
 import com.example.javafxexample.enums.InputTypeEnum;
 import com.example.javafxexample.enums.JSONKeysEnum;
 import com.example.javafxexample.enums.StepEnum;
@@ -38,8 +38,14 @@ public class StepTwoController extends ChildController {
     @FXML
     public void initialize() throws IOException {
         jsonObject = JSONFileReader.read();
-        emailTextField.setText((String) jsonObject.get(JSONKeysEnum.EMAIL.getText()));
-        passwordField.setText((String) jsonObject.get(JSONKeysEnum.PASSWORD.getText()));
+        String email = (String) jsonObject.get(JSONKeysEnum.EMAIL.getText());
+        String password = (String) jsonObject.get(JSONKeysEnum.PASSWORD.getText());
+
+        isEmail = !email.equals("");
+        isPassword = !password.equals("");
+
+        emailTextField.setText(email);
+        passwordField.setText(password);
         confirmPasswordField.setText("");
     }
 
@@ -60,26 +66,26 @@ public class StepTwoController extends ChildController {
             case EMAIL -> {
                 isEmail = VALID_EMAIL_REGEX.matcher(emailTextField.getText()).find();
                 if(!isEmail) {
-                    emailLabel.setStyle(ColorEnum.RED.getValue());
+                    emailLabel.setStyle(StyleClassEnum.WRONG.getValue());
                 } else {
-                    emailLabel.setStyle(ColorEnum.BLACK.getValue());
+                    emailLabel.setStyle(StyleClassEnum.GOOD.getValue());
                 }
             }
             case PASSWORD -> {
                 isPassword = !passwordField.getText().isEmpty()
                         && passwordField.getText().length() >= 8;
                 if(!isPassword) {
-                    passwordLabel.setStyle(ColorEnum.RED.getValue());
+                    passwordLabel.setStyle(StyleClassEnum.WRONG.getValue());
                 } else {
-                    passwordLabel.setStyle(ColorEnum.BLACK.getValue());
+                    passwordLabel.setStyle(StyleClassEnum.GOOD.getValue());
                 }
             }
             case CONFIRM_PASSWORD -> {
                 isConfirmPassword = passwordField.getText().equals(confirmPasswordField.getText());
                 if(!isConfirmPassword) {
-                    confirmPasswordLabel.setStyle(ColorEnum.RED.getValue());
+                    confirmPasswordLabel.setStyle(StyleClassEnum.WRONG.getValue());
                 } else {
-                    confirmPasswordLabel.setStyle(ColorEnum.BLACK.getValue());
+                    confirmPasswordLabel.setStyle(StyleClassEnum.GOOD.getValue());
                 }
             }
         }

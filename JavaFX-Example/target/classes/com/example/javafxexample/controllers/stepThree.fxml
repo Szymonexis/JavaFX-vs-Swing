@@ -15,11 +15,11 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Text fx:id="endText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="JUSTIFY" GridPane.halignment="CENTER" GridPane.valignment="CENTER" visible="false">
+      <Text styleClass="my-text" fx:id="endText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="JUSTIFY" GridPane.halignment="CENTER" GridPane.valignment="CENTER" visible="false">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Text>
-       <Button fx:id="revealButton" onAction="#onReveal" text="Reveal your secrets" textAlignment="JUSTIFY" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+       <Button styleClass="my-button" fx:id="revealButton" onAction="#onReveal" text="Reveal your secrets" textAlignment="JUSTIFY" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
    </children>
 </GridPane>

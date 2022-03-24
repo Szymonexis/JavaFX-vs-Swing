@@ -2,7 +2,6 @@ package com.example.javafxexample.controllers;
 
 import com.example.javafxexample.enums.JSONKeysEnum;
 import com.example.javafxexample.json.JSONFileReader;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
@@ -55,7 +54,7 @@ public class StepThreeController extends ChildController {
         }
     }
 
-    public void onReveal(ActionEvent actionEvent) throws IOException {
+    public void onReveal() throws IOException {
         getJsonData();
         setEndText();
         revealButton.setDisable(true);
