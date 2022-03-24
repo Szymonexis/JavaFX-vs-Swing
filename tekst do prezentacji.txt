@@ -1,0 +1,33 @@
+3 slajd
+Java swing to zestaw komponentów do tworzenia graficznych interfejsów użytkownika (GUI) w Javie. Powstał by nadać trochę elastyczności rozwiązaniom okienkowym pisanym wcześniej w AWT (Abstract Window Toolkit). Miał zbliżać aplikacje okienkowe pisane w Javie do tzw. look & feel (W projektowaniu oprogramowania wygląd i działanie graficznego interfejsu użytkownika obejmuje aspekty jego projektu, w tym elementy, takie jak kolory, kształty, układ i kroje pisma, a także zachowanie elementów dynamicznych, takich jak przyciski, pola i menu) jednak tylko nieliczne aplikacje napisane w swingu osiągają zamierzany wynik.
+
+5 slajd
+Przeniesienie funkcjonalności JavaFX do Java API oznaczało, że programiści Java nie musieli uczyć się nowego języka graficznego i dzięki temu czuć się komfortowo przy tworzeniu aplikacji przy użyciu normalnej składni języka Java.
+
+JavaFX wprowadziła nowy, deklaratywny sposób definiowania widoku aplikacji. Deklaratywność polega na tym, że to nie my odpowiadamy za inicjalizację obiektów poszczególnych kontrolek, ustawienie ich właściwości oraz stworzenie zależności między nimi, ale wyręcza nas w tym sama Java głównie w postaci klasy FXMLLoader.
+
+JavaFX współpracuje z CSSem
+przy widoku stworzonym w FXMLu wystarczy odpowiednie kontrolki oznaczyć wspólną klasą CSS, nadać im unikalne identyfikatory lub wykorzystać klasy wbudowane i całość określić w osobnym pliku CSS. 
+
+Jest też świetnym wsparciem dla multimediów.
+
+Wspiera projektowane na użądzenia mobilne i desktopy.
+
+Warto wspomnieć, że JavaFX i Swing działają bezproblemowo obok siebie.
+
+Slajd 8 i 9
+Stage - Jest kontenerem najwyższego poziomu, reprezentuje okno aplikacji, jest głównym obszarem roboczym.
+Scene - Jest pojemnikiem wszystkich elementów składających się na daną scenę (kontrolki, przychiski pola i inne elementy graficzne).
+		Tak żeby dobrze zobrazować to może być wiele scen w jednej aplikacji np.: scena która jest formularzem do logowania, po naciśnięciu guzika przechodzimy do sceny z kontem użytkownika.
+
+Slajd 17
+Metoda init() jest wywoływana na samym początku działania aplikacji. Służy ona do wykonywania różnych czynności przy inicjalizacji. Mie można jej jednak używać do tworzenia obiektu sceny ani do jej konstruowania. 
+
+Jeśli aplikacja nie potrzebuje żadnych czynności inicjalizacyjnych, to metody init() nie trzeba nadpisywać bo istnieje jej domyślna wersja.
+
+Po metodzie init() wywoływana jest metoda start() która stanowi początek działania aplikacji i może posłużyć do skonstruowania i przygotowania sceny. Parametrem tej metody jest obiekt klasy Scene dostarczony przez środowisko uruchomieniowe i stanowi scenę główną aplikacji. Jest to metoda abstrakcyjna i aplikacja musi ją nadpisać.
+
+Kiedy aplikacja kończy działanie, wywoływana jest metoda stop(), która pozwala na wykonanie czynności porządkowych związanych z zamykaniem aplikacji. W przypadkach, gdy wykonywanie takich czynności nie jest potrzebne, można skorzystać z pustej, domyślnej wersji tej metody.
+
+
+
