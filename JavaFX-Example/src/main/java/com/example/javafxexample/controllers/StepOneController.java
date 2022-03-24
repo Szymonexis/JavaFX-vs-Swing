@@ -1,5 +1,7 @@
 package com.example.javafxexample.controllers;
 
+import com.example.javafxexample.enums.ColorEnum;
+import com.example.javafxexample.enums.InputTypeEnum;
 import com.example.javafxexample.enums.JSONKeysEnum;
 import com.example.javafxexample.enums.StepEnum;
 import com.example.javafxexample.json.JSONFileReader;
@@ -10,15 +12,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class StepOneController extends ChildController {
     private JSONObject jsonObject;
     private Boolean isName = false;
     private Boolean isSurname = false;
+    private Boolean isBirth = false;
 
     public Label nameLabel;
     public Label surnameLabel;
@@ -34,28 +37,59 @@ public class StepOneController extends ChildController {
         jsonObject = JSONFileReader.read();
         nameTextField.setText((String) jsonObject.get(JSONKeysEnum.NAME.getText()));
         surnameTextField.setText((String) jsonObject.get(JSONKeysEnum.SURNAME.getText()));
+        String date = (String) jsonObject.get(JSONKeysEnum.DATE_OF_BIRTH.getText());
+        if (!date.equals("")) {
+            birthDatePicker.setValue(LocalDate.parse(date));
+        }
     }
 
-    public void onInput(KeyEvent keyEvent) {
-        if(nameTextField.getText().isEmpty()) {
-            nameLabel.setStyle("-fx-text-fill: red");
-            isName = false;
-        } else {
-            nameLabel.setStyle("-fx-text-fill: black");
-            isName = true;
+    public void onInputName() {
+        onInput(InputTypeEnum.NAME);
+    }
+
+    public void onInputSurname() {
+        onInput(InputTypeEnum.SURNAME);
+    }
+
+    public void onInputBirth() {
+        onInput(InputTypeEnum.BIRTH);
+    }
+
+    private void onInput(InputTypeEnum inputType) {
+        switch (inputType) {
+            case NAME -> {
+                if(nameTextField.getText().isEmpty()) {
+                    nameLabel.setStyle(ColorEnum.RED.getValue());
+                    isName = false;
+                } else {
+                    nameLabel.setStyle(ColorEnum.BLACK.getValue());
+                    isName = true;
+                }
+            }
+            case SURNAME -> {
+                if(surnameTextField.getText().isEmpty()) {
+                    surnameLabel.setStyle(ColorEnum.RED.getValue());
+                    isSurname = false;
+                } else {
+                    surnameLabel.setStyle(ColorEnum.BLACK.getValue());
+                    isSurname = true;
+                }
+            }
+            case BIRTH -> {
+                if(birthDatePicker.getValue() == null) {
+                    birthLabel.setStyle(ColorEnum.RED.getValue());
+                    isBirth = false;
+                } else {
+                    birthLabel.setStyle(ColorEnum.BLACK.getValue());
+                    isBirth = true;
+                }
+            }
         }
-        if(surnameTextField.getText().isEmpty()) {
-            surnameLabel.setStyle("-fx-text-fill: red");
-            isSurname = false;
-        } else {
-            surnameLabel.setStyle("-fx-text-fill: black");
-            isSurname = true;
-        }
-        nextButton.setDisable(!(isName && isSurname));
+        nextButton.setDisable(!(isName && isSurname && isBirth));
     }
 
     public void onNext(ActionEvent actionEvent) throws IOException {
-        if (isName && isSurname) {
+        if (isName && isSurname && isBirth) {
             parentController.childOnChangeForm(StepEnum.TWO);
             jsonObject = JSONFileReader.read();
             jsonObject.put(JSONKeysEnum.NAME.getText(), nameTextField.getText());

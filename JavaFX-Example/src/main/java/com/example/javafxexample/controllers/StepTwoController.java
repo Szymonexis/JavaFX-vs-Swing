@@ -1,16 +1,16 @@
 package com.example.javafxexample.controllers;
 
+import com.example.javafxexample.enums.ColorEnum;
+import com.example.javafxexample.enums.InputTypeEnum;
 import com.example.javafxexample.enums.JSONKeysEnum;
 import com.example.javafxexample.enums.StepEnum;
 import com.example.javafxexample.json.JSONFileReader;
 import com.example.javafxexample.json.JSONFileWriter;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -19,8 +19,12 @@ import java.util.regex.Pattern;
 public class StepTwoController extends ChildController {
     private JSONObject jsonObject;
     private Boolean isPassword = false;
+    private Boolean isConfirmPassword = false;
     private Boolean isEmail = false;
-    private final Pattern VALID_EMAIL_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+    private final Pattern VALID_EMAIL_REGEX = Pattern.compile(
+            "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
+            Pattern.CASE_INSENSITIVE
+    );
 
     public Label emailLabel;
     public Label passwordLabel;
@@ -36,50 +40,54 @@ public class StepTwoController extends ChildController {
         jsonObject = JSONFileReader.read();
         emailTextField.setText((String) jsonObject.get(JSONKeysEnum.EMAIL.getText()));
         passwordField.setText((String) jsonObject.get(JSONKeysEnum.PASSWORD.getText()));
-        confirmPasswordField.setText((String) jsonObject.get(JSONKeysEnum.EMAIL.getText()));
-        checkPasswords();
-        checkEmail();
+        confirmPasswordField.setText("");
     }
 
-    public void onInputPassword(KeyEvent keyEvent) {
-        checkPasswords();
+    public void onInputEmail() {
+        onInput(InputTypeEnum.EMAIL);
     }
 
-    private void checkPasswords() {
-        isPassword = !passwordField.getText().isEmpty()
-                && !confirmPasswordField.getText().isEmpty()
-                && passwordField.getText().length() >= 8
-                && passwordField.getText().equals(confirmPasswordField.getText());
+    public void onInputPassword() {
+        onInput(InputTypeEnum.PASSWORD);
+    }
 
-        if(!isPassword) {
-            passwordLabel.setStyle("-fx-text-fill: red");
-            confirmPasswordLabel.setStyle("-fx-text-fill: red");
-        } else {
-            passwordLabel.setStyle("-fx-text-fill: black");
-            confirmPasswordLabel.setStyle("-fx-text-fill: black");
+    public void onInputConfirmPassword() {
+        onInput(InputTypeEnum.CONFIRM_PASSWORD);
+    }
+
+    private void onInput(InputTypeEnum inputType) {
+        switch (inputType) {
+            case EMAIL -> {
+                isEmail = VALID_EMAIL_REGEX.matcher(emailTextField.getText()).find();
+                if(!isEmail) {
+                    emailLabel.setStyle(ColorEnum.RED.getValue());
+                } else {
+                    emailLabel.setStyle(ColorEnum.BLACK.getValue());
+                }
+            }
+            case PASSWORD -> {
+                isPassword = !passwordField.getText().isEmpty()
+                        && passwordField.getText().length() >= 8;
+                if(!isPassword) {
+                    passwordLabel.setStyle(ColorEnum.RED.getValue());
+                } else {
+                    passwordLabel.setStyle(ColorEnum.BLACK.getValue());
+                }
+            }
+            case CONFIRM_PASSWORD -> {
+                isConfirmPassword = passwordField.getText().equals(confirmPasswordField.getText());
+                if(!isConfirmPassword) {
+                    confirmPasswordLabel.setStyle(ColorEnum.RED.getValue());
+                } else {
+                    confirmPasswordLabel.setStyle(ColorEnum.BLACK.getValue());
+                }
+            }
         }
-
-        submitButton.setDisable(!(isPassword && isEmail));
+        submitButton.setDisable(!(isEmail && isPassword && isConfirmPassword));
     }
 
-    public void onInputEmail(KeyEvent keyEvent) {
-        checkEmail();
-    }
-
-    private void checkEmail() {
-        isEmail = VALID_EMAIL_REGEX.matcher(emailTextField.getText()).find();
-
-        if(!isEmail) {
-            emailLabel.setStyle("-fx-text-fill: red");
-        } else {
-            emailLabel.setStyle("-fx-text-fill: black");
-        }
-
-        submitButton.setDisable(!(isPassword && isEmail));
-    }
-
-    public void onSubmit(ActionEvent actionEvent) throws IOException {
-        if (isPassword && isEmail) {
+    public void onSubmit() throws IOException {
+        if (isEmail && isPassword && isConfirmPassword) {
             parentController.childOnChangeForm(StepEnum.THREE);
             jsonObject = JSONFileReader.read();
             jsonObject.put(JSONKeysEnum.EMAIL.getText(), emailTextField.getText());

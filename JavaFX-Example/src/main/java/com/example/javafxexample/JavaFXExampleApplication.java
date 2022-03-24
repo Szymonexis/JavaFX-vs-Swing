@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 public class JavaFXExampleApplication extends Application {
 
@@ -25,7 +24,7 @@ public class JavaFXExampleApplication extends Application {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put(JSONKeysEnum.NAME.getText(), "");
         jsonObject.put(JSONKeysEnum.SURNAME.getText(), "");
-        jsonObject.put(JSONKeysEnum.DATE_OF_BIRTH.getText(), LocalDate.now());
+        jsonObject.put(JSONKeysEnum.DATE_OF_BIRTH.getText(), "");
         jsonObject.put(JSONKeysEnum.EMAIL.getText(), "");
         jsonObject.put(JSONKeysEnum.PASSWORD.getText(), "");
 

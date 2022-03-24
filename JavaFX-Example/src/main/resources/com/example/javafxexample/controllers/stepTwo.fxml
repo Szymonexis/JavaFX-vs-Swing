@@ -20,12 +20,12 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <Label fx:id="emailLabel" text="E-mail" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-      <Label fx:id="passwordLabel" text="Password" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-      <Label fx:id="confirmPasswordLabel" text="Confirm Password" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <Label fx:id="emailLabel" text="E-mail*" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <Label fx:id="passwordLabel" text="Password*" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+      <Label fx:id="confirmPasswordLabel" text="Confirm Password*" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
       <TextField fx:id="emailTextField" onKeyReleased="#onInputEmail" promptText="ex. john.smith@google.com" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
       <PasswordField fx:id="passwordField" onKeyReleased="#onInputPassword" promptText="ex. Password123" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-      <PasswordField fx:id="confirmPasswordField" onKeyReleased="#onInputPassword" promptText="ex. Password123" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <PasswordField fx:id="confirmPasswordField" onKeyReleased="#onInputConfirmPassword" promptText="ex. Password123" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
       <Button fx:id="submitButton" text="Submit" onAction="#onSubmit" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
    </children>
 </GridPane>
