@@ -20,8 +20,11 @@ Stage - Jest kontenerem najwyższego poziomu, reprezentuje okno aplikacji, jest 
 Scene - Jest pojemnikiem wszystkich elementów składających się na daną scenę (kontrolki, przychiski pola i inne elementy graficzne).
 		Tak żeby dobrze zobrazować to może być wiele scen w jednej aplikacji np.: scena która jest formularzem do logowania, po naciśnięciu guzika przechodzimy do sceny z kontem użytkownika.
 
+Slajd 11
+Jako że struktura sceny jest drzewiasta możemy przedstawić ją w postaci grafu trzymając się podanych zasad.
+
 Slajd 17
-Metoda init() jest wywoływana na samym początku działania aplikacji. Służy ona do wykonywania różnych czynności przy inicjalizacji. Mie można jej jednak używać do tworzenia obiektu sceny ani do jej konstruowania. 
+Metoda init() jest wywoływana na samym początku działania aplikacji. Służy ona do wykonywania różnych czynności przy inicjalizacji. Nie można jej jednak używać do tworzenia obiektu sceny ani do jej konstruowania. 
 
 Jeśli aplikacja nie potrzebuje żadnych czynności inicjalizacyjnych, to metody init() nie trzeba nadpisywać bo istnieje jej domyślna wersja.
 
