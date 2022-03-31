@@ -4,6 +4,7 @@ import com.example.javafxexample.enums.JSONKeysEnum;
 import com.example.javafxexample.json.JSONFileReader;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import org.json.JSONObject;
 
@@ -18,6 +19,7 @@ public class StepThreeController extends ChildController {
     private String password;
 
     public Text endText;
+    public Label endLabel;
     public Button revealButton;
 
     public StepThreeController() throws IOException {
@@ -42,7 +44,7 @@ public class StepThreeController extends ChildController {
         if (name.isEmpty() || name.isBlank() || surname.isEmpty() || surname.isBlank()
                 || dateOfBirth.isEmpty() || dateOfBirth.isBlank() || password.isEmpty() || password.isBlank()
                 || email.isEmpty() || email.isBlank()) {
-            endText.setText("Sorry, I couldn't load all of the data\nPlease try again :3");
+            endLabel.setText("Sorry, I couldn't load all of the data\nPlease try again :3");
         } else {
             String endTextString = "";
             endTextString += "Hello " + name + " " + surname + " :)" + "\n";
@@ -50,7 +52,7 @@ public class StepThreeController extends ChildController {
             endTextString += "Your e-mail address is: " + email + "\n";
             endTextString += "Your super secret password is: " + password;
 
-            endText.setText(endTextString);
+            endLabel.setText(endTextString);
         }
     }
 
@@ -59,6 +61,6 @@ public class StepThreeController extends ChildController {
         setEndText();
         revealButton.setDisable(true);
         revealButton.setVisible(false);
-        endText.setVisible(true);
+        endLabel.setVisible(true);
     }
 }

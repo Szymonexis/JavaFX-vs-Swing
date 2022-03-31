@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Text?>
-
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
 <GridPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15" fx:controller="com.example.javafxexample.controllers.StepThreeController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -15,11 +12,11 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Text styleClass="my-text" fx:id="endText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="JUSTIFY" GridPane.halignment="CENTER" GridPane.valignment="CENTER" visible="false">
+      <Label styleClass="my-label" fx:id="endLabel" text="Text" textAlignment="JUSTIFY" GridPane.halignment="CENTER" GridPane.valignment="CENTER" visible="false">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
-      </Text>
+      </Label>
        <Button styleClass="my-button" fx:id="revealButton" onAction="#onReveal" text="Reveal your secrets" textAlignment="JUSTIFY" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
    </children>
 </GridPane>

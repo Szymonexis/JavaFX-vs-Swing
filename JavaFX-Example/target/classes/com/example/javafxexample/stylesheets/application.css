@@ -16,15 +16,13 @@
     -fx-border-color: white;
 }
 
+
 .my-label {
     -fx-text-fill: white;
 }
 
-.my-text {
-    -fx-fill: linear-gradient(to right, #3ab43d, #fdc01d);
-    -fx-stroke: white;
-    -fx-stroke-width: 0.5;
-    -fx-font-size: 35px;
+.label {
+    -fx-text-fill: red;
 }
 
 .my-button, .my-radio-button {

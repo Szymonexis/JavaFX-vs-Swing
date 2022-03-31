@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import java.net.URL?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxexample.controllers.MainWindowController">
    <top>
@@ -53,7 +50,7 @@
          </children>
       </VBox>
    </left>
-<!--   <stylesheets>-->
-<!--      <URL value="@stylesheets/application.css" />-->
-<!--   </stylesheets>-->
+   <stylesheets>
+      <URL value="@stylesheets/application.css" />
+   </stylesheets>
 </BorderPane>
